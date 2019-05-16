@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { AppRegistry, StyleSheet, Text, View, Button, Alert } from 'react-native';
 
 export default class Home extends React.Component {
 
@@ -8,9 +8,27 @@ export default class Home extends React.Component {
 
 		return (
 			<View style={{ flex: 1, justifyContent: "center", alignItems: "center"}} >
-				<Text> Login </Text>
-				<Text> Signup </Text>
+			<Button
+				onPress={loginAction}
+				title="Login"
+				color="#841584"
+			/>
+			<Button
+				onPress={signupAction}
+				title="Sign Up"
+				color="#841584"
+			/>
 			</View>
 		)
 	}
 }
+
+const loginAction = () => {
+		Alert.alert( 'Login alert!' )
+}
+
+const signupAction = () => {
+		Alert.alert( 'Sign Up alert!' )
+}
+
+AppRegistry.registerComponent('randomio', () => Home);
