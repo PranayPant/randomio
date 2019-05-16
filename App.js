@@ -1,20 +1,30 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import {createStackNavigator, createAppContainer} from 'react-navigation';
+import {createStackNavigator, createSwitchNavigator, createAppContainer} from 'react-navigation';
 
-import Home from './views/Home.js';
+import HomeScreen from './views/Home.js';
+import ProfileScreen from './views/Profile.js';
 
-class App extends React.Component {
+export default class App extends React.Component {
   render() {
-    return (
-      Home
-    );
+    return <AppContainer />;
   }
 }
 
-const MainNavigator = createStackNavigator({
-  Home: {screen: Home}
-})
+const AuthenticationNavigator = createStackNavigator({
+  Home: HomeScreen,
+});
+
+const AppNavigator = createStackNavigator({
+  /*
+   * Rather than being rendered by a screen component, the
+   * AuthenticationNavigator is a screen component
+   */
+  Home: AuthenticationNavigator,
+  Profile: ProfileScreen,
+});
+
+const AppContainer = createAppContainer(AppNavigator);
 
 const styles = StyleSheet.create({
   container: {
@@ -24,7 +34,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
-const AppNav = createAppContainer(MainNavigator);
-
-export default AppNav;

@@ -2,14 +2,16 @@
 import React from 'react';
 import { AppRegistry, StyleSheet, Text, View, Button, Alert } from 'react-native';
 
-export default class Home extends React.Component {
+import ProfileScreen from './Profile.js';
+
+export default class HomeScreen extends React.Component {
 
 	render() {
 
 		return (
 			<View style={{ flex: 1, justifyContent: "center", alignItems: "center"}} >
 			<Button
-				onPress={loginAction}
+				onPress={() => this.props.navigation.navigate('Profile')}
 				title="Login"
 				color="#841584"
 			/>
@@ -30,5 +32,3 @@ const loginAction = () => {
 const signupAction = () => {
 		Alert.alert( 'Sign Up alert!' )
 }
-
-AppRegistry.registerComponent('randomio', () => Home);
